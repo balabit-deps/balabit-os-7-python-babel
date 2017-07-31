@@ -1,0 +1,46 @@
+From 33b4728d340e2910cfaf689d937527c1cfe5cdf2 Mon Sep 17 00:00:00 2001
+From: Aarni Koskela <akx@iki.fi>
+Date: Thu, 6 Apr 2017 12:45:52 +0300
+Subject: [PATCH] Allow both dash and underscore separated locale identifiers
+ in pofiles
+
+Fixes #489
+
+Augments #420 (08b9c5e76e19ae)
+---
+ babel/messages/catalog.py     | 1 +
+ tests/messages/test_pofile.py | 6 ++++++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/babel/messages/catalog.py b/babel/messages/catalog.py
+index 3145fa3..fd40058 100644
+--- a/babel/messages/catalog.py
++++ b/babel/messages/catalog.py
+@@ -395,6 +395,7 @@ class Catalog(object):
+             elif name == 'last-translator':
+                 self.last_translator = value
+             elif name == 'language':
++                value = value.replace('-', '_')
+                 self.locale = Locale.parse(value)
+             elif name == 'language-team':
+                 self.language_team = value
+diff --git a/tests/messages/test_pofile.py b/tests/messages/test_pofile.py
+index ebf9702..f6cd66d 100644
+--- a/tests/messages/test_pofile.py
++++ b/tests/messages/test_pofile.py
+@@ -36,6 +36,12 @@ msgstr ""
+ "Language: en_US\n"''')
+         catalog = pofile.read_po(buf, locale='de')
+         self.assertEqual(Locale('en', 'US'), catalog.locale)
++        buf = StringIO(r'''
++msgid ""
++msgstr ""
++"Language: ko-KR\n"''')
++        catalog = pofile.read_po(buf, locale='de')
++        self.assertEqual(Locale('ko', 'KR'), catalog.locale)
+ 
+     def test_preserve_domain(self):
+         buf = StringIO(r'''msgid "foo"
+-- 
+2.11.0
+

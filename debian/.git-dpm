@@ -1,0 +1,11 @@
+# see git-dpm(1) from git-dpm package
+39dab7df89b25ebec59117ff5c16e3e402da2a83
+39dab7df89b25ebec59117ff5c16e3e402da2a83
+54080682f6bde25690dd605e4863ba67fab9d76a
+54080682f6bde25690dd605e4863ba67fab9d76a
+python-babel_2.4.0+dfsg.1.orig.tar.xz
+12e101ed652f6af08284e9217ae425f650469b6d
+7125916
+debianTag="debian/%e%v"
+patchedTag="patched/%e%v"
+upstreamTag="upstream/%e%u"
