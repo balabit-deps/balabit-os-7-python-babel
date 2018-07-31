@@ -1,3 +1,9 @@
+python-babel (2.4.0+dfsg.1-2ubuntu1bb1) bionic; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Tue, 31 Jul 2018 11:53:11 +0200
+
 python-babel (2.4.0+dfsg.1-2ubuntu1) artful; urgency=medium
 
   * d/p/allow-dash-underscore.patch: Cherry-pick patch from upstream master
